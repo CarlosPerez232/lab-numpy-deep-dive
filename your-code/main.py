@@ -9,61 +9,77 @@ print(np.version.version)
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
+a = np.random.random((2,3,5))
 
 
 
 #4. Print a.
-
+print(a)
 
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
-
+b = np.full((5,2,3), 1)
 
 
 #6. Print b.
-
+print(b)
 
 
 #7. Do a and b have the same size? How do you prove that in Python code?
 
+print("A size: ",a.size)
+print(a.shape)
 
-
+print("B size: ",b.size)
+print(b.shape)
 
 #8. Are you able to add a and b? Why or why not?
 
-
-
+#print(np.add(a, b))
+print("It's not possible to add a and b because of the shape")
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
-
-
+c = np.transpose(b,(1,2,0))
+print(c)
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
+d = (a+c)
+print(d)
 
-
+print("It can be added now because of the same shape of a and c")
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
-
+print(a)
+print(d)
 
 
 
 #12. Multiply a and c. Assign the result to e.
-
-
+print("///")
+e = (a*c)
+print(e)
 
 #13. Does e equal to a? Why or why not?
-
-
+print(a)
+print("a and e are the same because at one point there was a multiplication by 1")
+print("///")
 
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
 
+d_maxi = np.max(d)
+d_min = np.min(d)
+d_mean = np.mean(d)
 
-
+print("Max element: ",d_maxi)
+print("Min element: ",d_min)
+print("Mean element: ",d_mean)
+print("///")
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
-
+f = np.empty([2,3,5])
+print(f)
 
 
 """
@@ -75,7 +91,8 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
-
+f=np.where(d==d_min,0,np.where(d==d_mean,50,np.where(d==d_maxi,100,np.where((d>d_min)&(d<d_mean),25,75))))
+print(f)
 
 
 
